@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
+var controller = require("./controller/index.controller");
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Products Creta' });
-});
+router.get('/', controller.homepage);
+router.get('/dashboard', controller.dashboard);
+
+
 
 module.exports = router;
