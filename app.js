@@ -42,6 +42,7 @@ app.use('/users', usersRouter);
 
 // API
 require("./app/routes/product.route")(app);
+require("./app/routes/form.route")(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
