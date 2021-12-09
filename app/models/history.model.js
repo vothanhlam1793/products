@@ -1,13 +1,9 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
         {
-            code: String,
-            description: String,
-            attributes: Array,
-            name: String,
-            type: String,
-            source: String,
-            status: String
+            idModel: String,
+            typeModel: String,
+            history: Array
         },
         { 
             timestamps: true 
@@ -20,6 +16,6 @@ module.exports = mongoose => {
         return object;
     });
   
-    const Product = mongoose.model("products", schema);
-    return Product;
+    const History = mongoose.model("histories", schema);
+    return History;
   };

@@ -1,9 +1,10 @@
 const db = require("../models");
 const Model = db.products;
+const History = db.histories;
 var nameController = "Product";
 
 function createObj (data) {
-    var objArray = ['code', 'description', 'attributes', 'name', 'type', 'source'];
+    var objArray = ['code', 'description', 'attributes', 'name', 'type', 'source', 'status'];
     var a = {};
     objArray.forEach(function(e){
         a[e] = data[e];
