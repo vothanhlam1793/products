@@ -1,13 +1,61 @@
 <html>
     <head>
         <%- include("../header.ejs") %>
+        <script src="/js/product/ModelProduct.js"></script>
+        <script src="/js/product/ModelFile.js"></script>
     </head>
     <body class="container-fluid">
         <div>
             <%- include("../menu.ejs"); %>
         </div>
-        <div>
-
+        <%- include("parse_excel.ejs") %>
+        <div id="app">
+            <div class="p-3">
+                <select class="form-control" v-model="slcFile">
+                    <option v-for="file in models.files" :value="file">{{file.getName()}}</option>
+                </select>
+            </div>
+            <div class="p-3">
+                <h3>{{slcFile.getName()}}</h3>
+                <button v-for="sheet, index in slcFile.getData()" class="btn btn-secondary mr-2" @click="slcSheet = sheet">{{index}}</button>
+            </div>
+            <div>
+                <h4>{{slcSheet.name}}</h4>
+                <table class="table table-bordered">
+                    <tr v-for="row in slcSheet.data">
+                        <td v-for="col in row">{{col}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
+        <!-- <div class="row">
+            <div class="col">
+                <h2>TEMP</h2>
+            </div>
+            <div class="col">
+                <h2>MERGE & CREATE</h2>
+            </div>
+            <div class="col">
+                <h2>EDIT</h2>
+            </div>
+        </div> -->
     </body>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                models: new CretaFiles(),
+                slcFile: new CretaFile(),
+                slcSheet: {name: "", data: []}
+            },
+            methods: {
+                show: function(){
+
+                }
+            },
+            created: function(){
+
+            }
+        })
+    </script>
 </html>

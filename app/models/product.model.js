@@ -6,7 +6,7 @@ module.exports = mongoose => {
             attributes: Array,
             name: String,
             type: String,
-            source: String,
+            source: Object,
             status: String
         },
         { 

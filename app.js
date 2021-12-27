@@ -3,11 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const fileUpload = require('express-fileupload');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+// default options
+app.use(fileUpload());
 
 const db = require("./app/models");
 db.mongoose
@@ -43,6 +47,7 @@ app.use('/users', usersRouter);
 // API
 require("./app/routes/product.route")(app);
 require("./app/routes/form.route")(app);
+require("./app/routes/file.route")(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
